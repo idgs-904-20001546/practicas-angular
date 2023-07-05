@@ -1,0 +1,93 @@
+<h1>Resistencias</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <div>
+                <div>
+                    <div class="mb-3">
+                        <label class="form-label">Banda 1</label>
+                        <select class="form-select" [(ngModel)]="currentResistance.firstBand">
+                            <option
+                                *ngFor="let color of bandColors"
+                                [class]="'bg-' + color"
+                                [value]="color"
+                            >
+                                {{ color }}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+        
+                <div>
+                    <div class="mb-3">
+                        <label class="form-label">Banda 2</label>
+                        <select class="form-select" [(ngModel)]="currentResistance.secondBand">
+                            <option
+                                *ngFor="let color of bandColors"
+                                [class]="'bg-' + color"
+                                [value]="color"
+                            >
+                                {{ color }}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <label class="form-label">Banda 3</label>
+                        <select class="form-select" [(ngModel)]="currentResistance.thirdBand">
+                            <option
+                                *ngFor="let color of bandColors"
+                                [class]="'bg-' + color"
+                                [value]="color"
+                            >
+                                {{ color }}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <label class="form-label">Toleracia</label>
+                        <select class="form-select" [(ngModel)]="currentResistance.tolerance">
+                            <option
+                                *ngFor="let color of toleranceColors"
+                                [class]="'bg-' + color"
+                                [value]="color"
+                            >
+                                {{ color }}
+                        </option>
+                        </select>
+                    </div>
+                </div>
+                <button class="btn btn-primary px-5" (click)="addResistance()">CALCULAR</button>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Banda 1</th>
+                        <th>Banda 2</th>
+                        <th>Banda 3</th>
+                        <th>Tolerancia</th>
+                        <th>Resistencia</th>
+                        <th>min</th>
+                        <th>max</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let resistence of resistanceList.map(getResistanceValues.bind(this))">
+                        <td [class]="'bg-' + resistence.firstBand">{{ resistence.firstBand }}</td>
+                        <td [class]="'bg-' + resistence.secondBand">{{ resistence.secondBand }}</td>
+                        <td [class]="'bg-' + resistence.thirdBand">{{ resistence.thirdBand }}</td>
+                        <td [class]="'bg-' + resistence.tolerance">{{ resistence.tolerance }}</td>
+                        <td>{{ resistence.value }}</td>
+                        <td>{{ resistence.min }}</td>
+                        <td>{{ resistence.max }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,47 @@
+.bg-black  {
+    background-color: black;
+    color: white;
+}
+.bg-brown  {
+    background-color: brown;
+    color: white;
+}
+.bg-red    {
+    background-color: red;
+    color: white;
+}
+.bg-orange {
+    background-color: orange;
+    color: white;
+}
+.bg-yellow {
+    background-color: yellow;
+    color: white;
+}
+.bg-green  {
+    background-color: yellowgreen;
+    color: white;
+}
+.bg-blue   {
+    background-color: lightblue;
+    color: white;
+}
+.bg-indigo {
+    background-color: indigo;
+    color: white;
+}
+.bg-gray   {
+    background-color: gray;
+    color: white;
+}
+.bg-white  {
+    background-color: white;
+    color: black;
+}
+.bg-gold {
+    background-color: goldenrod;
+    color: white;
+}
+.bg-silver {
+    background-color: silver;
+}

@@ -1,0 +1,56 @@
+
+<section>
+    <header class="bg-primary py-5">
+        <div class="container">
+            <h1 class="display-1 fw-bold text-white">Cinepolis</h1>
+        </div>
+    </header>
+    <div class="container py-5">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label for="">Nombre</label>
+                    <input type="text" [(ngModel)]="saleOrder.name" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label for="">Compradores</label>
+                    <input type="number" [(ngModel)]="saleOrder.buyers" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label for="">Tarjeta Cinepolis</label>
+                    <select [(ngModel)]="saleOrder.cardCinema" class="form-select">
+                        <option selected value="">No</option>
+                        <option value="true">Si</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="">Cantidad de Boletos</label>
+                    <input type="number" [(ngModel)]="saleOrder.quantity" class="form-control">
+                </div>
+                <div class="text-center py-4">
+                    <button (click)="calculate()" class="btn btn-primary px-5">PROCESAR</button>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div *ngIf="error" class="alert alert-danger">
+                    <p>{{ error }}</p>
+                </div>
+                <div *ngIf="!error" class="card">
+                    <div class="card-header">
+                        Resumen de Compra
+                    </div>
+                    <div class="card-body">
+                        <div>
+                            <span>Nombre</span>
+                            <span class="ms-1 fw-bold text-primary">{{ saleOrder.name }}</span>
+                        </div>
+                        <div>
+                            <span>Total</span>
+                            <span class="ms-1 fw-bold text-primary">{{ saleOrder.total|currency }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
