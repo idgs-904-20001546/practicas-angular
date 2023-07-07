@@ -3,6 +3,7 @@ import { NgModule } from "@angular/core";
 import { CinemaComponent } from "./cinema/cinema.component";
 import { ResistancesComponent } from "./resistances/resistances.component";
 import { DistanceComponent } from "./distance/distance.component";
+import { PizzaComponent } from "./pizza/pizza.component";
 
 const routes: Routes = [
     {
@@ -21,6 +22,10 @@ const routes: Routes = [
     {
         path: 'distance',
         component: DistanceComponent
+    },
+    {
+        path: 'pizzas',
+        component: PizzaComponent
     }
 ]
 

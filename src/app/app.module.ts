@@ -10,6 +10,8 @@ import { CinemaComponent } from './cinema/cinema.component';
 import { CinemaModule } from './cinema/cinema.module';
 import { AppRoutingModule } from './app-routing.module';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { PizzaComponent } from './pizza/pizza.component';
+import { PizzaModule } from './pizza/pizza.module';
 
 
 @NgModule({
@@ -23,7 +25,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     DistanceModule,
     ResistancesModule,
     CinemaModule,
-    AppRoutingModule
+    AppRoutingModule,
+    PizzaModule
   ],
   providers: [],
   bootstrap: [AppComponent]

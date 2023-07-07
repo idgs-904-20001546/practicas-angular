@@ -1,0 +1,84 @@
+<div class="container">
+    <header class="pt-3 pb-4">
+        <h1 class="fw-bold">Crear Orden</h1>
+        <hr class="border-primary border-1" />
+    </header>
+    <div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="p-2 ps-4 py-3 border border-1 rounded-3">
+                    <div class="mb-3">
+                        <label for="txt-fullname" class="form-label">Nombre</label>
+                        <input type="text" [(ngModel)]="currentOrder.client" class="form-control" id="txt-fullname">
+                    </div>
+                    <div class="mb-3">
+                        <label for="txt-address" class="form-label">Dirección</label>
+                        <input type="text" [(ngModel)]="currentOrder.address" class="form-control" id="txt-address">
+                    </div>
+                    <div class="mb-3">
+                        <label for="txt-phone" class="form-label">Telefono</label>
+                        <input type="text" [(ngModel)]="currentOrder.phone" class="form-control" id="txt-phone">
+                    </div>
+                    <div class="mb-3">
+                        <label for="txt-date" class="form-label">Fecha</label>
+                        <input type="date" [(ngModel)]="currentOrder.date" class="form-control" id="txt-date">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <p class="fw-semibold mb-4">Tamaño</p>
+                <div *ngFor="let size of pizzaSizes" class="form-check">
+                    <input type="radio" class="form-check-input" [(ngModel)]="currentOrder.size" [value]="size.name" [id]="'size-' + size.name">
+                    <label [for]="'size-' + size.name" class="form-check-label">
+                        {{ size.name }} {{ size.price | currency }}
+                    </label>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <p class="fw-semibold mb-4">Ingredientes</p>
+                <div *ngFor="let ingredient of ingredinets" class="form-check">
+                    <input type="checkbox" (change)="onChangeIngredient(ingredient.name, $event)" class="form-check-input" [id]="'ingredient-' + ingredient.name" [value]="ingredient.name" />
+                    <label [for]="'ingredient-' + ingredient.name">{{ ingredient.name }} <span>{{ ingredient.price | currency }}</span> </label>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <label for="txt-quantity" class="form-label">Cantidad</label>
+                <input type="number" [(ngModel)]="currentOrder.quantity" class="form-control" id="txt-quantity">
+            </div>
+        </div>
+        <div class="text-center">
+            <button (click)="onSaveOrder()" class="btn btn-primary px-5">Guardar</button>
+        </div>
+    </div>
+
+    <table class="table mt-5">
+        <thead>
+            <tr>
+                <th>Cliente</th>
+                <th>Dirección</th>
+                <th>Teléfono</th>
+                <th>Tamaño</th>
+                <th>Ingredientes</th>
+                <th>Cantidad</th>
+                <th>Fecha</th>
+                <th>Subtotal</th>
+            </tr>
+        </thead>
+         <tbody>
+             <tr *ngFor="let saleOrder of saleOrders.map(getSaleOrderWithTotal.bind(this))">
+                 <td>{{ saleOrder.client }}</td>
+                 <td>{{ saleOrder.address }}</td>
+                 <td>{{ saleOrder.phone }}</td>
+                 <td>{{ saleOrder.size }}</td>
+                 <td>
+                     <ul>
+                        <li *ngFor="let ingredient of saleOrder.ingredients">{{ ingredient }}</li>
+                     </ul>
+                 </td>
+                 <td>{{ saleOrder.quantity }}</td>
+                 <td>{{ saleOrder.date }}</td>
+                 <td>{{ saleOrder.total }}</td>
+             </tr>
+         </tbody>
+     </table>
+</div>
